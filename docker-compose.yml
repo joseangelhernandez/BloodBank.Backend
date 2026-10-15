@@ -1,0 +1,18 @@
+# SQL Server local para desarrollo.
+# Levantar:  docker compose up -d
+# Conexión:  Server=localhost,1433; User Id=sa; Password=BloodBank_Dev123!
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: bloodbank-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "BloodBank_Dev123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - bloodbank-data:/var/opt/mssql
+
+volumes:
+  bloodbank-data:
