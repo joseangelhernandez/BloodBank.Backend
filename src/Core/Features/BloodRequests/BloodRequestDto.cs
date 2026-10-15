@@ -13,7 +13,7 @@ public record BloodRequestDto(
     string EmergencyContact,
     string Cause,
     Gender? Gender,
-    string? Location,
+    string Location,
     DateOnly NeededBefore,
     string? Notes,
     DateTime CreatedAt)

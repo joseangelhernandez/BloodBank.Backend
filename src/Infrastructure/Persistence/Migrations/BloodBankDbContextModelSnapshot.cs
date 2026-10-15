@@ -59,6 +59,7 @@ namespace BloodBank.Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Location")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -88,7 +89,7 @@ namespace BloodBank.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("RequesterId");
 
-                    b.ToTable("BloodRequests", (string)null);
+                    b.ToTable("BloodRequests");
                 });
 
             modelBuilder.Entity("BloodBank.Domain.Entities.Donor", b =>
@@ -140,7 +141,7 @@ namespace BloodBank.Infrastructure.Persistence.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Donors", (string)null);
+                    b.ToTable("Donors");
                 });
 
             modelBuilder.Entity("BloodBank.Domain.Entities.User", b =>
@@ -197,7 +198,7 @@ namespace BloodBank.Infrastructure.Persistence.Migrations
                     b.HasIndex("FirebaseUid")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BloodBank.Domain.Entities.BloodRequest", b =>

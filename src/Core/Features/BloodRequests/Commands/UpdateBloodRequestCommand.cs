@@ -14,7 +14,7 @@ public record UpdateBloodRequestCommand(
     [Required, MaxLength(20)] string EmergencyContact,
     [Required, MaxLength(150)] string Cause,
     Gender? Gender,
-    [MaxLength(150)] string? Location,
+    [Required, MaxLength(150)] string Location,
     DateOnly NeededBefore,
     [MaxLength(500)] string? Notes);
 
@@ -38,7 +38,7 @@ public class UpdateBloodRequestHandler(IBloodRequestRepository requests, IUserRe
         request.EmergencyContact = command.EmergencyContact.Trim();
         request.Cause = command.Cause.Trim();
         request.Gender = command.Gender;
-        request.Location = command.Location?.Trim();
+        request.Location = command.Location.Trim();
         request.NeededBefore = command.NeededBefore;
         request.Notes = command.Notes;
         request.UpdatedAt = DateTime.UtcNow;

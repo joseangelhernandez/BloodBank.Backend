@@ -16,7 +16,7 @@ public class BloodRequest : BaseEntity
     public string Cause { get; set; } = string.Empty;
     public Gender? Gender { get; set; }
 
-    public string? Location { get; set; }
+    public string Location { get; set; } = string.Empty;
 
     public DateOnly NeededBefore { get; set; }
     public string? Notes { get; set; }

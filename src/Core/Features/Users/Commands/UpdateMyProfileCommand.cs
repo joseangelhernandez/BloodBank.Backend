@@ -11,7 +11,7 @@ public record UpdateMyProfileCommand(
     [MaxLength(20)] string? Phone,
     Gender? Gender,
     [MaxLength(3)] string? BloodGroup,
-    [MaxLength(150)] string? Location,
+    [Required, MaxLength(150)] string Location,
     [MaxLength(500)] string? PhotoUrl);
 
 public class UpdateMyProfileHandler(IUserRepository users, IFirebaseAuthClient firebase)
@@ -29,7 +29,7 @@ public class UpdateMyProfileHandler(IUserRepository users, IFirebaseAuthClient f
         user.Phone = command.Phone;
         user.Gender = command.Gender;
         user.BloodGroup = command.BloodGroup;
-        user.Location = command.Location;
+        user.Location = command.Location.Trim();
         user.PhotoUrl = command.PhotoUrl;
         user.UpdatedAt = DateTime.UtcNow;
 

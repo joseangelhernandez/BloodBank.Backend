@@ -50,7 +50,7 @@ public class BloodBankDbContext(DbContextOptions<BloodBankDbContext> options) : 
             request.Property(r => r.EmergencyContact).HasMaxLength(20).IsRequired();
             request.Property(r => r.Cause).HasMaxLength(150).IsRequired();
             request.Property(r => r.Gender).HasConversion<string>().HasMaxLength(10);
-            request.Property(r => r.Location).HasMaxLength(150); // opcional
+            request.Property(r => r.Location).HasMaxLength(150).IsRequired();
             request.Property(r => r.Notes).HasMaxLength(500);
             request.HasIndex(r => r.BloodGroup);
             request.HasIndex(r => r.CreatedAt);

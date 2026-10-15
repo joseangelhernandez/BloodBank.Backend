@@ -14,7 +14,7 @@ public record CreateBloodRequestCommand(
     [Required, MaxLength(20)] string EmergencyContact,
     [Required, MaxLength(150)] string Cause,
     Gender? Gender,
-    [MaxLength(150)] string? Location,
+    [Required, MaxLength(150)] string Location,
     DateOnly NeededBefore,
     [MaxLength(500)] string? Notes);
 
@@ -36,7 +36,7 @@ public class CreateBloodRequestHandler(IBloodRequestRepository requests, IUserRe
             EmergencyContact = command.EmergencyContact.Trim(),
             Cause = command.Cause.Trim(),
             Gender = command.Gender,
-            Location = command.Location?.Trim(),
+            Location = command.Location.Trim(),
             NeededBefore = command.NeededBefore,
             Notes = command.Notes
         };
